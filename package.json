@@ -1,0 +1,25 @@
+{
+  "scripts": {
+    "dev": "npm-run-all --parallel sass-dev postcss-dev server",
+    "build": "npm-run-all --sequential sass-build postcss-build",
+    "sass-dev": "sass sass:temp --watch --embed-source-map",
+    "sass-build": "sass sass:temp --embed-source-map --style=compressed",
+    "postcss-dev": "postcss temp/*.css --use autoprefixer --dir . --watch --map",
+    "postcss-build": "postcss temp/*.css --use autoprefixer --dir .  --map",
+    "server": "browser-sync start --server --watch --files '*.html,*.css,js/*.js' "
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.2.6",
+    "browser-sync": "^2.27.3",
+    "eslint": "^7.29.0",
+    "eslint-config-prettier": "^8.3.0",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.3.5",
+    "postcss-cli": "^8.3.1",
+    "sass": "^1.35.1"
+  },
+  "browserslist": [
+    "defaults",
+    "not IE 11"
+  ]
+}

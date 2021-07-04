@@ -1,0 +1,106 @@
+body {
+  background-color: var(--honeydew);
+}
+
+.italic {
+  font-style: italic;
+}
+
+.rainbow-text {
+  background-image: linear-gradient(
+    90deg,
+    var(--neon-orange),
+    var(--light-orange)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+* {
+  color: var(--text-color);
+}
+
+.site-header {
+  grid-area: header;
+  h1 {
+    text-align: center;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+}
+
+main {
+  grid-area: main;
+  padding: 1rem;
+}
+
+p {
+  hyphens: auto;
+}
+
+.sidebar {
+  --link-color: var(--neon-orange);
+  --active-link-color: var(--imperial-red);
+
+  padding: 1rem;
+  margin: 1rem 0;
+  background-color: var(--purple);
+  &--1 {
+    grid-area: sidebar-1;
+  }
+  &--2 {
+    grid-area: sidebar-2;
+  }
+}
+
+.site-footer {
+  grid-area: footer;
+}
+
+.site-header,
+.site-footer,
+.sidebar {
+  --text-color: var(--honeydew);
+}
+
+.site-header,
+.site-footer {
+  background-color: var(--purple);
+  padding: 1rem;
+}
+
+.site-wrapper {
+  display: grid;
+
+  // "Sticky Footer"
+  min-height: 100vh;
+  // main ist immer die zweite Zeile und erhält freien Platz
+  grid-template-rows: auto 1fr;
+
+  @media (max-width: $medium-min - em(1)) {
+    grid-template-areas:
+      'header'
+      'main'
+      'sidebar-1'
+      'sidebar-2'
+      'footer';
+  }
+
+  @media (min-width: $medium-min) and (max-width: $large-min - em(1)) {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      'header header'
+      'main main'
+      'sidebar-1 sidebar-2'
+      'footer footer';
+  }
+
+  @media (min-width: $large-min) {
+    grid-template-areas:
+      'header header header header header'
+      '. sidebar-1 main sidebar-2 .'
+      'footer footer footer footer footer';
+
+    grid-template-columns: 1fr 10rem minmax(auto, 50rem) 10rem 1fr;
+  }
+}

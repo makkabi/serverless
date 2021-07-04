@@ -1,0 +1,127 @@
+// Importiere eine Teildatei. Unterstrich und Dateiendung darf weggelassen werden
+@import 'normalize';
+@import 'functions';
+@import 'variables/variables';
+@import 'layout';
+@import 'navigation';
+@import 'pioneers';
+@import 'memory';
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.button {
+  display: inline-block;
+  margin: 0.5rem;
+  padding: 15px 45px;
+  font-size: 48px;
+  font-family: sans-serif;
+  line-height: 1.8;
+  appearance: none;
+  color: var(--off-white);
+  background-color: var(--light-blue);
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 10px var(--dark-blue);
+  transition: background-color 0.2s;
+
+  &:hover,
+  &:focus {
+    background-color: var(--medium-blue);
+  }
+
+  &--on {
+    background-color: var(--medium-blue);
+    box-shadow: 0 5px var(--dark-blue);
+    transform: translateY(5px);
+  }
+}
+
+.flame {
+  fill: none;
+}
+
+.flame--lit {
+  fill: var(--flame-color);
+  animation-name: burn;
+  animation-duration: 0.6s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+@keyframes burn {
+  0% {
+    transform: scale(0.99);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1.01);
+    opacity: 1;
+  }
+}
+
+.gears {
+  max-width: 600px;
+  width: 100%;
+  display: block;
+  margin: auto;
+  --duration: 9s;
+}
+
+.gears--running .gear--1,
+.gears--running .gear--2 {
+  animation: rotate;
+
+  animation-duration: var(--duration);
+
+  animation-iteration-count: infinite;
+
+  animation-timing-function: linear;
+
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+.gears--running .gear--2 {
+  animation-direction: reverse;
+}
+
+.gears--running.gears--reverse .gear--2 {
+  animation-direction: normal;
+}
+
+.gears--running.gears--reverse .gear--1 {
+  animation-direction: reverse;
+}
+
+.speed input {
+  display: block;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0turn);
+  }
+  100% {
+    transform: rotate(1turn);
+  }
+}
+
+.image-grid {
+  &__images {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr));
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+}

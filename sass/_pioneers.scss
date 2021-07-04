@@ -1,0 +1,54 @@
+.pioneers__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  grid-gap: 2rem;
+}
+
+.pioneer {
+  &__heading {
+    font-size: 2.5rem;
+    a {
+      color: var(--neon-orange);
+      &:hover,
+      &:focus {
+        color: var(--imperial-red);
+      }
+    }
+  }
+
+  &__slogan {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    display: block;
+    @supports (-webkit-background-clip: text) {
+      background-image: linear-gradient(
+        90deg,
+        var(--purple),
+        var(--imperial-red)
+      );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: auto;
+    .js & {
+      cursor: pointer;
+    }
+  }
+
+  &__biography {
+    font-size: 1.2rem;
+    line-height: 1.2;
+    overflow: hidden;
+    transition: all 0.3s ease-out;
+    max-height: rem(1000);
+    &--hidden {
+      max-height: 0;
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+}

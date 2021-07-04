@@ -1,0 +1,53 @@
+.memory {
+  &__board {
+    max-width: 30rem;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 5rem);
+    gap: 1rem;
+    justify-content: center;
+    transition: background-color 0.2s;
+    transition-delay: 0.3s;
+
+    &--inactive {
+      // pointer-events legt fest, ob das Element Klick-Events empfangen
+      // kann.
+      pointer-events: none;
+      background-color: red;
+    }
+  }
+}
+
+// https://3dtransforms.desandro.com/card-flip
+.card {
+  width: 5rem;
+  height: 5rem;
+
+  position: relative;
+  transition: transform 0.4s ease-out;
+  transform-style: preserve-3d;
+
+  &--visible {
+    transform: rotateY(180deg);
+  }
+
+  &:not(.card--found) {
+    // http://csscursor.info/
+    cursor: pointer;
+  }
+
+  &__side {
+    background-color: lightblue;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    font-size: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &--back {
+      transform: rotateY(180deg);
+    }
+  }
+}

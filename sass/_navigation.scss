@@ -1,0 +1,8 @@
+a {
+  color: var(--link-color);
+  transition: color 0.2s ease-out;
+  &:hover,
+  &:focus {
+    color: var(--active-link-color);
+  }
+}
